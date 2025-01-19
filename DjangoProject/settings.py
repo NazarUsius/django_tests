@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-lvi-q)7a7x4paj)@&enb0so&69z$bj$*6e%q-um30=id9fix=o
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Application definition
 
