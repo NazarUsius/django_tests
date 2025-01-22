@@ -7,6 +7,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     age = models.IntegerField()
     email = models.EmailField()
+    bio = models.TextField()
 
     def __str__(self):
         return self.name
@@ -18,7 +19,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    pooblished = models.BooleanField(default=False)
+    published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
