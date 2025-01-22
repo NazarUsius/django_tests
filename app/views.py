@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from app.models import User
+from app.models import User, Post
 from .forms import AuthorPostsForm
 
 
@@ -14,12 +14,16 @@ def all_authors(request):
     return render(request, 'posts/all_authors.html', {'authors': authors})
 
 def all_posts_author(request):
+
     if request.method == 'GET':
         form = AuthorPostsForm()
-        return render(request, 'posts/author_posts', {"form": form})
+        return render(request, 'posts/author_posts.html', {"form": form})
 
     elif request.method == 'POST':
         form = AuthorPostsForm(request.POST)
+        posts = []
         if form.is_valid():
-            user = form.save()
-        return render(request, 'posts/author_posts', {"form": form})
+            author = form.cleaned_data['author']
+            posts = Post.objects.filter(author=author)
+
+        return render(request, 'posts/author_posts.html', {"form": form, "posts": posts})
