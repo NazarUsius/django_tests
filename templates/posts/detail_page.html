@@ -1,0 +1,21 @@
+{% extends 'base/_base.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block title %}
+Title
+{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<h3>{{ post.body }}</h3>
+<h6>{{ post.created_at }}</h6>
+
+
+<h6>This post created by {{ post.author }}</h6>
+
+
+
+
+
+{% endblock %}

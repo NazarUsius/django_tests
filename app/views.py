@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from app.models import User, Post
 from .forms import AuthorPostsForm
@@ -27,3 +27,13 @@ def all_posts_author(request):
             posts = Post.objects.filter(author=author)
 
         return render(request, 'posts/author_posts.html', {"form": form, "posts": posts})
+
+
+def detail_post(request, id):
+    if request.method == 'GET':
+        try:
+            post = Post.objects.get(pk=id)
+        except Post.DoesNotExist:
+            return redirect("all_posts_author")
+
+        return render(request, 'posts/detail_page.html', {'post': post})
