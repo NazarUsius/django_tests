@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 
+app_name = 'blog'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.main),
-    path('blogs/authors', views.all_authors),
-    path('blogs/get/post', views.all_posts_author),
-    path('blogs/<int:id>', views.detail_post),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', views.main, name='main'),
+    path('blogs/authors', views.all_authors, name='all_authors'),
+    path('blogs/get/post', views.all_posts_author, name='post_by_author'),
+    path('blogs/<int:id>', views.detail_post, name='detail'),
 
 ]
