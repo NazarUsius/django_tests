@@ -22,7 +22,8 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main),
-    path('all/authors', views.all_authors),
-    path('post/author', views.all_posts_author),
+    path('blogs/authors', views.all_authors),
+    path('blogs/get/post', views.all_posts_author),
+    path('blogs/<int:id>', views.detail_post),
 
 ]
